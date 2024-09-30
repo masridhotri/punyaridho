@@ -1,7 +1,7 @@
 @extends('layout.main')
 @section('content')
     <div class="table-responsive "style="height: 500px; width: 100%; border: 0.5px solid black ">
-        <table class="table">
+        <table id="example" class="table table-striped nowrap" style="width:100%">
             <thead>
                 <tr>
                     <th>No</th>
@@ -11,6 +11,9 @@
                     <th>
                         <div class="col12"><button class="btn btn-danger btn-sm text-light"><a
                                     href="{{ route('admin.index.user') }}">tambah</a></button></div>
+                    </th>
+                    <th>
+                        aski
                     </th>
                 </tr>
             </thead>

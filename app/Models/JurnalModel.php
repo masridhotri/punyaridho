@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class JurnalModel extends Model
 {
     use HasFactory;
+    protected $table = 'jurnal';
+    protected $fillable = [
+
+    ];
 }

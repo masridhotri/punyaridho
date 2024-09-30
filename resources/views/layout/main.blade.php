@@ -23,12 +23,14 @@
     <link rel="stylesheet" href="{{ asset('tamplate/dist/assets/css/style.css') }}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset('tamplate/dist/assets/images/favicon.png') }}" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.7/css/dataTables.bootstrap5.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.3/css/responsive.bootstrap5.css">
 </head>
 
 <body>
-  <div class="nav" style="width: 100%">
-    @extends('partials.header')
-  </div>
+    <div class="nav" style="width: 100%">
+        @extends('partials.header')
+    </div>
     {{-- <div class="container-scroller">
       <div class="row p-0 m-0 proBanner" id="proBanner">
         <div class="col-md-12 p-0 m-0">
@@ -45,7 +47,7 @@
         </div>
       </div> --}}
     <!-- partial:partials/_navbar.html -->
-  
+
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
@@ -748,8 +750,8 @@
             <!-- partial:partials/_footer.html -->
             @include('partials.footer')
             <!-- partial -->
-          </div>
-       
+        </div>
+
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <!-- partial -->
@@ -777,6 +779,16 @@
     <!-- endinject --> <!-- Custom js for tis page-->
     <script src="{{ asset('tamplate/src/assets/js/jquery.cookie.js" type="text/javascript') }}"></script>
     <script src="{{ asset('tamplate/src/assets/js/dashboard.js') }}"></script>
+   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+   <script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
+   <script src="https://cdn.datatables.net/2.1.7/js/dataTables.bootstrap5.js"></script>
+   <script src="https://cdn.datatables.net/responsive/3.0.3/js/dataTables.responsive.js"></script>
+   <script src="https://cdn.datatables.net/responsive/3.0.3/js/responsive.bootstrap5.js"></script>
+    <script>
+        new DataTable('#example', {
+            responsive: true
+        });
+    </script>
     <!-- <script src="assets/js/Chart.roundedBarCharts.js"></script> -->
     <!-- End custom js for this page-->
 </body>

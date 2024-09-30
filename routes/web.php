@@ -33,6 +33,7 @@ route::group(['prefix'=>'admin','middleware' => ['auth'], 'as' => 'admin.'] ,fun
     route::post('/user/update/{id}',[UserController::class,'update'])->name('user.update');
     route::post('/user/delete/{id}',[UserController::class,'delete'])->name('user.delete');
     route::get('/buku',[BukuController::class,'index'])->name('buku');
+
 });
 
 

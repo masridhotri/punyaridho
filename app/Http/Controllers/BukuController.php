@@ -7,6 +7,9 @@ use App\Models\BukuModel;
 
 class BukuController extends Controller
 {
+    public function buku(){
+        return view('buku');
+    }
     public function index()
     {
         $buku_data = BukuModel::get();
