@@ -36,7 +36,7 @@ route::group(['prefix'=>'admin','middleware' => ['auth'], 'as' => 'admin.'] ,fun
     route::get('/buku',[BukuController::class,'index'])->name('buku');
     route::get('jurnal',[JurnalController::class,'index'])->name('jurnal');
     route::get('/buku/create',[BukuController::class,'create'])->name('create');
-    route::post('/buku/submit',[BukuController::class,'submit'])->name('submit');
+    route::post('/buku/store',[BukuController::class,'store'])->name('store');
 });
 
 

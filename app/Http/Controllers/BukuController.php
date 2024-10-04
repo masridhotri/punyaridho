@@ -19,7 +19,7 @@ class BukuController extends Controller
         return view('buku.list',compact('buku','kategori'));
     }
 
-    function submit(Request $request){
+    function store(Request $request){
         $validated = $request->validate([
             'judul' =>'required',
             'penulis'=>'required',
@@ -30,6 +30,9 @@ class BukuController extends Controller
             'foto'=>'required|image|mimes:jpg,png,gif|max:2048',
             'stock'=>'required',
         ]);
+        if($request->hasfile('foto')){
+            $path = $request->file('foto')->store('fotos', 'public');
+         }
         $buku = New BukuModel();
         $buku->judul = $request->judul;
         $buku->penerbit = $request->penerbit;
@@ -38,8 +41,9 @@ class BukuController extends Controller
         $buku->bahasa = $request->bahasa;
         $buku->harga = $request->harga;
         $buku->foto = $request->file('foto')->submit('fotos');
-        $buku->stock = $request->stock;
+        $buku->stok = $request->stok;
         $buku->save();
+        dd($request->all());
         return redirect()->route('admin.buku')->with('success', 'Buku berhasil ditambahkan!');
      }
 }

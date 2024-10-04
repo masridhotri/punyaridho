@@ -4,7 +4,7 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="table-responsive "style="height: 500px; width: 100%; border: 0.5px solid black ">
-            <table  id="example" class="table table-striped nowrap" style="width:100%" >
+            <table id="example" class="table table-striped nowrap" style="width:100%" >
                 <thead>
                     <tr>
                         <th>No</th>
@@ -31,7 +31,7 @@
                             <td>{{ $buk->bahasa }}</td>
                             <td>{{ $buk->harga }}</td>
                             <td>{{ $buk->foto}}</td>
-                            <td>{{ $buk->stock}}</td>
+                            <td>{{ $buk->stok}}</td>
                             <td>
                               {{-- <a href="{{ route('admin.index.user', $d->id) }}" claas="btn btn-primary btn-sm">
                                 <form action="{{route('admin.user.delete', $d->id)}}" method="post">
@@ -64,7 +64,7 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <form class="forms-sample" action="{{route('admin.submit')}}" method="post" enctype="multipart/form-data">
+                    <form class="forms-sample" action="{{route('admin.store')}}" method="post" enctype="multipart/form-data">
                       @csrf 
                       <div class="form-group">
                         <label for="exampleInputName1">judul</label>
