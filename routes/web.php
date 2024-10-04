@@ -4,6 +4,7 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\JurnalController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +34,9 @@ route::group(['prefix'=>'admin','middleware' => ['auth'], 'as' => 'admin.'] ,fun
     route::post('/user/update/{id}',[UserController::class,'update'])->name('user.update');
     route::post('/user/delete/{id}',[UserController::class,'delete'])->name('user.delete');
     route::get('/buku',[BukuController::class,'index'])->name('buku');
-
+    route::get('jurnal',[JurnalController::class,'index'])->name('jurnal');
+    route::get('/buku/create',[BukuController::class,'create'])->name('create');
+    route::post('/buku/submit',[BukuController::class,'submit'])->name('submit');
 });
 
 

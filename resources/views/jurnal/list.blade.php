@@ -19,7 +19,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($buku_data as $d)
+                    @foreach ($data_jurnal as $d)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $d->name }}</td>
@@ -98,7 +98,8 @@
         </div>
       </div>
     </div>
+  <button class="btn btn-primary w-3" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Create data</button>
+
   </div>
  
-  <button class="btn btn-primary w-3" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Create data</button>
 @endsection

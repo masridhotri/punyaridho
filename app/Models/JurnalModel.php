@@ -10,6 +10,11 @@ class JurnalModel extends Model
     use HasFactory;
     protected $table = 'jurnal';
     protected $fillable = [
-
+        'id_jurnal',
+        'judul',
+        'akreditasi',
+        'penerbit',
+        'tgl_terbit',
+        'id_kategori'
     ];
 }

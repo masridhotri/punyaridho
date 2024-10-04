@@ -24,8 +24,7 @@
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{ route ('admin.buku') }}">buku</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{ route('admin.jurnal') }}">Dropdowns</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{ route('admin.jurnal') }}">jurnal</a></li>
                 </ul>
               </div>
         </li>

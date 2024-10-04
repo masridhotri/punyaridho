@@ -9,10 +9,6 @@
                     <th>Email</th>
                     <th>role</th>
                     <th>
-                        <div class="col12"><button class="btn btn-danger btn-sm text-light"><a
-                                    href="{{ route('admin.index.user') }}">tambah</a></button></div>
-                    </th>
-                    <th>
                         aski
                     </th>
                 </tr>
@@ -25,23 +21,28 @@
                         <td>{{ $d->email }}</td>
                         <td>{{ $d->role }}</td>
                         <td>
+                        <button type="submit">
                           <a href="{{ route('admin.index.user', $d->id) }}" claas="btn btn-primary btn-sm">
                             <form action="{{route('admin.user.delete', $d->id)}}" method="post">
                               @csrf
-                              <button type="submit" class="btn btn-danger btn-sm" >hapus</button>
                             </form>
+                            hapus
+                        
                           </a>
-                        </td>
-                        <td>
+                        </button>
+                        <br>
+                        <button type="submit">
+                            
                           <a href="{{ route('admin.user.edit', $d->id) }}" claas="btn btn-primary btn-sm">
-                            
-                              <button type="submit" class="btn btn-secondary btn-sm" >edit</button>
-                            
+                            ediit
                           </a>
+                        </button>
                         </td>
                     </tr
                 @endforeach
             </tbody>
         </table>
     </div>
+    <button class="btn btn-primary me-md-2" type="button"><a
+        href="{{ route('admin.index.user') }}">tambah</a></button>
 @endsection

@@ -9,6 +9,7 @@
                     <tr>
                         <th>No</th>
                         <th>judul</th>
+                        <th>penulis</th>
                         <th>penerbit</th>
                         <th>tahun terbit</th>
                         <th>kategori</th>
@@ -19,26 +20,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($buku_data as $d)
+                    @foreach ($buku as $buk)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $d->name }}</td>
-                            <td>{{ $d->email }}</td>
-                            <td>{{ $d->role }}</td>
+                            <td>{{ $buk->judul }}</td>
+                            <td>{{ $buk->penulis }}</td>
+                            <td>{{ $buk->penerbit }}</td>
+                            <td>{{ $buk->tahun }}</td>
+                            <td>{{ $buk->kategori  }}</td>
+                            <td>{{ $buk->bahasa }}</td>
+                            <td>{{ $buk->harga }}</td>
+                            <td>{{ $buk->foto}}</td>
+                            <td>{{ $buk->stock}}</td>
                             <td>
-                              <a href="{{ route('admin.index.user', $d->id) }}" claas="btn btn-primary btn-sm">
+                              {{-- <a href="{{ route('admin.index.user', $d->id) }}" claas="btn btn-primary btn-sm">
                                 <form action="{{route('admin.user.delete', $d->id)}}" method="post">
                                   @csrf
                                   <button type="submit" class="btn btn-danger btn-sm" >hapus</button>
                                 </form>
-                              </a>
+                              </a> --}}
                             </td>
                             <td>
-                              <a href="{{ route('admin.user.edit', $d->id) }}" claas="btn btn-primary btn-sm">
+                              {{-- <a href="{{ route('admin.user.edit', $d->id) }}" claas="btn btn-primary btn-sm">
                                 
                                   <button type="submit" class="btn btn-secondary btn-sm" >edit</button>
                                 
-                              </a>
+                              </a> --}}
                             </td>
                         </tr
                     @endforeach
@@ -57,12 +64,19 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <form class="forms-sample" action="{{route('admin.submit')}}" method="post">
-                      @csrf
+                    <form class="forms-sample" action="{{route('admin.submit')}}" method="post" enctype="multipart/form-data">
+                      @csrf 
                       <div class="form-group">
                         <label for="exampleInputName1">judul</label>
                         <input type="text" name="judul" class="form-control" id="exampleInputName1" placeholder="Name">
                         @error('judul')
+                          <small>{{$message}}</small>
+                        @enderror
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">penulis</label>
+                        <input type="text" name="penulis" class="form-control" id="exampleInputName1" placeholder="Name">
+                        @error('penulis')
                           <small>{{$message}}</small>
                         @enderror
                       </div>
@@ -75,22 +89,60 @@
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword4">tahun terbit</label>
-                        <input type="date" name="tahunterbit" class="form-control" id="exampleInputPassword4" placeholder="Password">
+                        <input type="number" name="tahunterbit" class="form-control" id="exampleInputPassword4" placeholder="Password">
                         @error('tahunterbit ')
                           <small>{{$message}}</small>
                         @enderror
                       </div>
                       <div class="form-group">
-                        <label for="exampleSelectrole">role</label>
-                        <select class="form-control" name="role" id="exampleSelectrole">
-                          <option value="Admin">Admin</option>
-                          <option value="User" >User</option>
+                        <label for="exampleSelectrole">kategori</label>
+                        <select class="form-control" name="kategori" id="exampleSelectrole">
+                          <option value="1">fiksi</option>
+                          <option value="1">sanis</option>
+                          <option value="1">ilmu agama</option>
+                          <option value="1">ilmu politik</option>
+                          <option value="1">ilmu terapan</option>
+                          <option value="1">ilmu filsafatn</option>
+                          <option value="1">pengembangan diri</option>
+                          {{-- @foreach ( $kategori )
+                          <option value="{{ $kategori->id }}" {{ $kategori->id == $buku->kategori_id? 'selected' : '' }}>
+                            {{ $kategori->nama }} <!-- Sesuaikan dengan nama kolom -->
+                        </option>
+                          @endforeach --}}
                         </select>
                         @error('role')
                           <small>{{$message}}</small>
                         @enderror
                       </div>
-                      <button type="submit" class="btn btn-primary mr-2">Submit</button></button>
+                      <div class="form-group">
+                        <label for="exampleInputPassword4">bahasa</label>
+                        <input type="text" name="bahasa" class="form-control" id="exampleInputPassword4" placeholder="Password">
+                        @error('bahasa')
+                          <small>{{$message}}</small>
+                        @enderror
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword4">harga</label>
+                        <input type="number" name="harga" class="form-control" id="exampleInputPassword4" placeholder="Password">
+                        @error('harga')
+                          <small>{{$message}}</small>
+                        @enderror
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword4">foto</label>
+                        <input type="file" name="foto" accept="image/*" required>
+                        @error('foto')
+                          <small>{{$message}}</small>
+                        @enderror
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword4">stock</label>
+                        <input type="number" name="stok" class="form-control" id="exampleInputPassword4" placeholder="Password">
+                        @error('stok')
+                          <small>{{$message}}</small>
+                        @enderror
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
                     </form>
                   </div>
                 </div>

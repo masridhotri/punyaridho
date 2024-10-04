@@ -22,7 +22,7 @@ class CreateBukuTable extends Migration
             $table->foreignId('kategori_id')->constrained('kategori');
             $table->string('bahasa');
             $table->bigInteger('harga');
-            $table->string('foto');
+            $table->string('file_path');
             $table->integer('stok');
             $table->timestamps();
         });
