@@ -19,6 +19,7 @@ class BukuModel extends Model
         'kategori_id',
         'bahasa',
         'harga',
+        'foto',
         'stok'
     ];
     

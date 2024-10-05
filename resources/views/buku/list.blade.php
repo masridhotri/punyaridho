@@ -16,7 +16,8 @@
                         <th>bahasa</th>
                         <th>harga</th>
                         <th>foto</th>
-                        <th>stock</th>
+                        <th>stok</th>
+                        <th>aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,33 +28,28 @@
                             <td>{{ $buk->penulis }}</td>
                             <td>{{ $buk->penerbit }}</td>
                             <td>{{ $buk->tahun }}</td>
-                            <td>{{ $buk->kategori  }}</td>
+                            <td>{{ $buk->kategori_id  }}</td>
                             <td>{{ $buk->bahasa }}</td>
                             <td>{{ $buk->harga }}</td>
-                            <td>{{ $buk->foto}}</td>
-                            <td>{{ $buk->stok}}</td>
                             <td>
-                              {{-- <a href="{{ route('admin.index.user', $d->id) }}" claas="btn btn-primary btn-sm">
-                                <form action="{{route('admin.user.delete', $d->id)}}" method="post">
-                                  @csrf
-                                  <button type="submit" class="btn btn-danger btn-sm" >hapus</button>
-                                </form>
-                              </a> --}}
-                            </td>
-                            <td>
-                              {{-- <a href="{{ route('admin.user.edit', $d->id) }}" claas="btn btn-primary btn-sm">
-                                
-                                  <button type="submit" class="btn btn-secondary btn-sm" >edit</button>
-                                
-                              </a> --}}
-                            </td>
+                             <div class="showfoto">
+                              <img src="{{ asset('uploads/'.$buk->foto) }}" class="rounded"
+                              style="width: 50px">
+                             </div>
+                        </td>
+                            <td>{{ $buk->stok}}</td>  
+                          <td> 
+                            <button class="btn btn-primary w-3" data-bs-target="#modaledit" data-bs-toggle="modal">edit</button>
+                            <button class="btn btn-danger text-light w-3" data-bs-target="#modaledit" data-bs-toggle="modal">edit</button>
+                          </td>
                         </tr
                     @endforeach
                 </tbody>
             </table>
         </div>
+    </main>
 </div>
-<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+<div class="modal fade" id="modalcreate" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -64,15 +60,14 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <form class="forms-sample" action="{{route('admin.store')}}" method="post" enctype="multipart/form-data">
-                      @csrf 
+                    <form action="{{route('admin.store')}}" method="post" enctype="multipart/form-data">
+                      @csrf
                       <div class="form-group">
                         <label for="exampleInputName1">judul</label>
                         <input type="text" name="judul" class="form-control" id="exampleInputName1" placeholder="Name">
                         @error('judul')
                           <small>{{$message}}</small>
                         @enderror
-                      </div>
                       <div class="form-group">
                         <label for="exampleInputName1">penulis</label>
                         <input type="text" name="penulis" class="form-control" id="exampleInputName1" placeholder="Name">
@@ -89,14 +84,14 @@
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword4">tahun terbit</label>
-                        <input type="number" name="tahunterbit" class="form-control" id="exampleInputPassword4" placeholder="Password">
+                        <input type="number" name="tahun" class="form-control" id="exampleInputPassword4" placeholder="Password">
                         @error('tahunterbit ')
                           <small>{{$message}}</small>
                         @enderror
                       </div>
                       <div class="form-group">
                         <label for="exampleSelectrole">kategori</label>
-                        <select class="form-control" name="kategori" id="exampleSelectrole">
+                        <select class="form-control" name="kategori_id" id="exampleSelectrole">
                           <option value="1">fiksi</option>
                           <option value="1">sanis</option>
                           <option value="1">ilmu agama</option>
@@ -136,7 +131,7 @@
                         @enderror
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputPassword4">stock</label>
+                        <label for="exampleInputPassword4">stok</label>
                         <input type="number" name="stok" class="form-control" id="exampleInputPassword4" placeholder="Password">
                         @error('stok')
                           <small>{{$message}}</small>
@@ -148,9 +143,10 @@
                 </div>
               </div>
         </div>
+        </div>
       </div>
     </div>
   </div>
- 
-  <button class="btn btn-primary w-3" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Create data</button>
+
+  <button class="btn btn-primary w-3" data-bs-target="#modalcreate" data-bs-toggle="modal">Create data</button>
 @endsection
