@@ -33,11 +33,18 @@ route::group(['prefix'=>'admin','middleware' => ['auth'], 'as' => 'admin.'] ,fun
     route::get('/user/edit/{id}',[UserController::class,'edit'])->name('user.edit');
     route::post('/user/update/{id}',[UserController::class,'update'])->name('user.update');
     route::post('/user/delete/{id}',[UserController::class,'delete'])->name('user.delete');
-    route::get('/buku',[BukuController::class,'index'])->name('buku');
+    
+
     route::get('jurnal',[JurnalController::class,'index'])->name('jurnal');
     // route::get('/buku/create',[BukuController::class,'create'])->name('create');
+
+
+
+
+    route::get('/buku',[BukuController::class,'index'])->name('buku');
     route::post('/buku/store',[BukuController::class,'store'])->name('store');
     route::post('/buku/update/{id}',[BukuController::class,'update'])->name('buku.update');
+    route::post('/buku/delete/{id}',[BukuController::class,'delete'])->name('buku.delete');
 });
 
 

@@ -17,8 +17,10 @@ class BukuController extends Controller
     public function index()
     {
         $kategori = KategoriModel::all();
+        
         $buku = BukuModel::get();
-        return view('buku.list',compact('buku'));
+       
+        return view('buku.list',compact('buku','kategori'));
     }
 
     function store(Request $request){
@@ -63,7 +65,6 @@ class BukuController extends Controller
 
       function update(Request $request,$id) {
         $buku = BukuModel::find($id);
-        
         $buku->judul = $request->judul;
         $buku->penulis = $request->penulis;
         $buku->penerbit = $request->penerbit;
@@ -83,6 +84,11 @@ class BukuController extends Controller
         
         $buku->save();
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.buku');
+    }
+    function delete($id) {
+    $buku = BukuModel::find($id);
+    $buku->delete();
+    return redirect()->route('admin.buku');
     }
 }

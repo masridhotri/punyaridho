@@ -27,9 +27,9 @@
                               @csrf
                             </form>
                             hapus
-                        
                           </a>
                         </button>
+                        <br>
                         <br>
                         <button type="submit">
                             

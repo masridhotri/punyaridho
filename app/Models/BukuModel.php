@@ -25,7 +25,7 @@ class BukuModel extends Model
     
         public function kategori()
         {
-            return $this->belongsTo(KategoriModel::class, 'id_kategori');
+            return $this->belongsTo(KategoriModel::class, 'kategori_id');
         }
         public  function detailtransaksi()
         {

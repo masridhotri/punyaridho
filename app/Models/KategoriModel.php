@@ -13,4 +13,7 @@ class KategoriModel extends Model
     protected $fillable =[
         'nama'
     ];
+    public function buku(){
+        return $this->hasMany(BukuModel::class,'id_buku');
+    }
 }

@@ -748,7 +748,7 @@
             @yield('content')
             <!-- content-wrapper ends -->
             <!-- partial:partials/_footer.html -->
-            @include('partials.footer')
+            {{-- @include('partials.footer') --}}
             <!-- partial -->
         </div>
 
