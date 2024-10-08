@@ -16,4 +16,7 @@ class KategoriModel extends Model
     public function buku(){
         return $this->hasMany(BukuModel::class,'id_buku');
     }
+    public function jurnal(){
+        return $this->hasMany(BukuModel::class,'id_jurnal');
+    }
 }

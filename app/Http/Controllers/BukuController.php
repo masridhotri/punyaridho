@@ -60,7 +60,7 @@ class BukuController extends Controller
         }
 
         $buku->save();
-        return redirect()->route('admin.buku');
+        return redirect()->route('admin.buku'); 
      }
 
       function update(Request $request,$id) {

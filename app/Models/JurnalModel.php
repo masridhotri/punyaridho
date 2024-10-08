@@ -12,9 +12,16 @@ class JurnalModel extends Model
     protected $fillable = [
         'id_jurnal',
         'judul',
-        'akreditasi',
+        'penulis',
         'penerbit',
-        'tgl_terbit',
-        'id_kategori'
-    ];
+        'tahun',
+        'akreditasi',
+        'kategori_id',
+        'file'
+    ];     
+    public function kategori()
+    {
+        return $this->belongsTo(KategoriModel::class, 'kategori_id');
+    }
+
 }

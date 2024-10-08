@@ -41,12 +41,14 @@
                                 </td>
                                 <td>{{ $buk->stok }}</td>
                                 <td>
+                                    <div class="d-flex align-item-center">
                                     <button class="btn btn-primary w-3" data-bs-target="#modalupdate{{ $buk->id }}"
-                                        data-bs-toggle="modal">edit</button>
+                                        data-bs-toggle="modal"><i class="bi bi-pencil-square"></i>  edit</button>
                                     <form action="{{ route('admin.buku.delete', $buk->id) }}" method="post">
                                         @csrf
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        <button type="submit" class="btn btn-danger text-light"><i class="bi bi-trash"></i>  hapus</button>
                                     </form>
+                                    </div>
                                 </td>
                             </tr @endforeach
                     </tbody>
@@ -152,7 +154,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
     {{-- modal untuk mengedit ataupun mengupdate data  --}}
     <button class="btn btn-primary w-3" data-bs-target="#modalcreate" data-bs-toggle="modal">Create data</button>
@@ -268,43 +269,26 @@
         </div>
     @endforeach
     {{-- user layout --}}
-    <div class="row justify-content-center">
+    <div class="row justify-content-center gap-2">
         @foreach ($buku as $wd)
-            <div class="col-md-3">
-                <div class="card border shadow-sm p-1 mb- bg-body-tertiary rounded" style="height: 25em; width=1 5em;">
-                    <div class="ftose" style="width: 30rem">
-                        <img src="{{ asset('uploads/' . $wd->foto) }}" class="card-img-top" alt="..."
-                            style=" width:200px">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $wd->judul }}</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a 4 bit longer.</p>
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop">
-                            Launch static backdrop modal
-                        </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        ...
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Understood</button>
-                                    </div>
-                                </div>
+            <div class="col-md-5 border">
+                <div class="card mb-3" style="max-width: 25rem;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{{ asset('uploads/' . $wd->foto) }}" class="img-fluid rounded-start"
+                                alt="..." style="width:11rem; height:11rem; object-fit:cover;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $wd->judul }}</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in
+                                    to additional content. This content is a little bit longer.</p>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#modalinfo{{ $wd->id }}">
+                                    info
+                                </button>
+                               
                             </div>
                         </div>
                     </div>
@@ -312,4 +296,42 @@
             </div>
         @endforeach
     </div>
+    @foreach ( $buku as $info )
+    <!-- Modal -->
+    <div class="modal fade" id="modalinfo{{ $info->id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title fs-5" id="exampleModalToggleLabel">modal {{ $info->id }}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-0 gap-2">
+                    <div class="col-md-5">
+                        <img src="{{ asset('uploads/' . $info->foto) }}" class="img-fluid rounded-start"
+                            alt="..." style="width:11rem; height:11rem; object-fit:cover;">
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ $info->judul }}</h3>
+                            <br>
+                            <br>
+                            <p>penerbit : {{ $info->penerbit }}</p>
+                            <p>kategori : {{ $info->kategori->nama }}</p>
+                            <p>bahasa   : {{ $info->bahasa  }}</p>
+                            <p>harga    : Rp. {{ $info->harga  }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p>stock saat ini: {{ $info->stok }}</p>
+              <button class="btn btn-success text-light" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"><i class="bi bi-cart-plus"></i>  keranjang</button>
+              <button class="btn border border-success" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"><i class="bi bi-bag-check"></i>  beli</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      @endforeach
+    <p>p</p>
 @endsection
