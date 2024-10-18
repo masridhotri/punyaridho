@@ -18,6 +18,7 @@ class CreateJurnalTable extends Migration
             $table->string('judul');
             $table->string('akreditas');
             $table->foreignId('kategori_id')->constrained('kategori');
+            $table->string('file');
             $table->timestamps();
         });
     }

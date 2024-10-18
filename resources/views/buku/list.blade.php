@@ -42,12 +42,14 @@
                                 <td>{{ $buk->stok }}</td>
                                 <td>
                                     <div class="d-flex align-item-center">
-                                    <button class="btn btn-primary w-3" data-bs-target="#modalupdate{{ $buk->id }}"
-                                        data-bs-toggle="modal"><i class="bi bi-pencil-square"></i>  edit</button>
-                                    <form action="{{ route('admin.buku.delete', $buk->id) }}" method="post">
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger text-light"><i class="bi bi-trash"></i>  hapus</button>
-                                    </form>
+                                        <button class="btn btn-primary w-3"
+                                            data-bs-target="#modalupdate{{ $buk->id }}" data-bs-toggle="modal"><i
+                                                class="bi bi-pencil-square"></i> edit</button>
+                                        <form action="{{ route('admin.buku.delete', $buk->id) }}" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger text-light"><i
+                                                    class="bi bi-trash"></i> hapus</button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr @endforeach
@@ -56,6 +58,10 @@
             </div>
         </main>
     </div>
+    <button class="btn btn-primary w-3" data-bs-target="#modalcreate" data-bs-toggle="modal">Create data</button>
+    <br>
+    <button class="btn btn-primary w-1" style="width: 40rem;"><a href="{{ route('admin.buku.export') }}">export</a></button>
+
     {{-- modal untuk membuat data baru  --}}
     <div class="modal fade" id="modalcreate" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -147,6 +153,7 @@
                                             @enderror
                                         </div>
                                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -156,7 +163,7 @@
         </div>
     </div>
     {{-- modal untuk mengedit ataupun mengupdate data  --}}
-    <button class="btn btn-primary w-3" data-bs-target="#modalcreate" data-bs-toggle="modal">Create data</button>
+
 
     @foreach ($buku as $ub)
         <div class="modal fade" id="modalupdate{{ $ub->id }}" aria-hidden="true"
@@ -182,81 +189,78 @@
                                             @error('judul')
                                                 <small>{{ $message }}</small>
                                             @enderror
-                                            <div class="form-group">
-                                                <label for="exampleInputName1">penulis</label>
-                                                <input type="text" value="{{ $ub->penulis }}" name="penulis"
-                                                    class="form-control" id="exampleInputName1" placeholder="Name">
-                                                @error('penulis')
-                                                    <small>{{ $message }}</small>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail3">penerbit</label>
-                                                <input type="text" value="{{ $ub->penerbit }}" name="penerbit"
-                                                    class="form-control" id="exampleInputEmail3" placeholder="Email">
-                                                @error('penerbit')
-                                                    <small>{{ $message }}</small>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword4">tahun terbit</label>
-                                                <input type="number" value="{{ $ub->tahun }}" name="tahun"
-                                                    class="form-control" id="exampleInputPassword4"
-                                                    placeholder="Password">
-                                                @error('tahunterbit ')
-                                                    <small>{{ $message }}</small>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleSelectrole">kategori</label>
-                                                <select class="form-control" name="kategori_id" id="exampleSelectrole">
-                                                    @foreach ($kategori as $cate)
-                                                        <option value="{{ $cate->id }}"
-                                                            {{ $cate->id == $ub->kategori_id ? 'selected' : '' }}>
-                                                            {{ $cate->nama }} <!-- Sesuaikan dengan nama kolom -->
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                @error('role')
-                                                    <small>{{ $message }}</small>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword4">bahasa</label>
-                                                <input type="text" value="{{ $ub->bahasa }}" name="bahasa"
-                                                    class="form-control" id="exampleInputPassword4"
-                                                    placeholder="Password">
-                                                @error('bahasa')
-                                                    <small>{{ $message }}</small>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword4">harga</label>
-                                                <input type="number" value="{{ $ub->harga }}" name="harga"
-                                                    class="form-control" id="exampleInputPassword4"
-                                                    placeholder="Password">
-                                                @error('harga')
-                                                    <small>{{ $message }}</small>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword4">foto</label>
-                                                <input type="file" value="{{ $ub->foto }}" name="foto"
-                                                    accept="image/*" required>
-                                                @error('foto')
-                                                    <small>{{ $message }}</small>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword4">stok</label>
-                                                <input type="number" value="{{ $ub->stok }}" name="stok"
-                                                    class="form-control" id="exampleInputPassword4"
-                                                    placeholder="Password">
-                                                @error('stok')
-                                                    <small>{{ $message }}</small>
-                                                @enderror
-                                            </div>
-                                            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputName1">penulis</label>
+                                            <input type="text" value="{{ $ub->penulis }}" name="penulis"
+                                                class="form-control" id="exampleInputName1" placeholder="Name">
+                                            @error('penulis')
+                                                <small>{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail3">penerbit</label>
+                                            <input type="text" value="{{ $ub->penerbit }}" name="penerbit"
+                                                class="form-control" id="exampleInputEmail3" placeholder="Email">
+                                            @error('penerbit')
+                                                <small>{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword4">tahun terbit</label>
+                                            <input type="number" value="{{ $ub->tahun }}" name="tahun"
+                                                class="form-control" id="exampleInputPassword4" placeholder="Password">
+                                            @error('tahunterbit ')
+                                                <small>{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleSelectrole">kategori</label>
+                                            <select class="form-control" name="kategori_id" id="exampleSelectrole">
+                                                @foreach ($kategori as $cate)
+                                                    <option value="{{ $cate->id }}"
+                                                        {{ $cate->id == $ub->kategori_id ? 'selected' : '' }}>
+                                                        {{ $cate->nama }} <!-- Sesuaikan dengan nama kolom -->
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('role')
+                                                <small>{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword4">bahasa</label>
+                                            <input type="text" value="{{ $ub->bahasa }}" name="bahasa"
+                                                class="form-control" id="exampleInputPassword4" placeholder="Password">
+                                            @error('bahasa')
+                                                <small>{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword4">harga</label>
+                                            <input type="number" value="{{ $ub->harga }}" name="harga"
+                                                class="form-control" id="exampleInputPassword4" placeholder="Password">
+                                            @error('harga')
+                                                <small>{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword4">foto</label>
+                                            <input type="file" value="{{ $ub->foto }}" name="foto"
+                                                accept="image/*" required>
+                                            @error('foto')
+                                                <small>{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword4">stok</label>
+                                            <input type="number" value="{{ $ub->stok }}" name="stok"
+                                                class="form-control" id="exampleInputPassword4" placeholder="Password">
+                                            @error('stok')
+                                                <small>{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
                                     </form>
                                 </div>
                             </div>
@@ -265,73 +269,8 @@
                 </div>
             </div>
         </div>
-        </div>
-        </div>
     @endforeach
     {{-- user layout --}}
-    <div class="row justify-content-center gap-2">
-        @foreach ($buku as $wd)
-            <div class="col-md-5 border">
-                <div class="card mb-3" style="max-width: 25rem;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="{{ asset('uploads/' . $wd->foto) }}" class="img-fluid rounded-start"
-                                alt="..." style="width:11rem; height:11rem; object-fit:cover;">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $wd->judul }}</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in
-                                    to additional content. This content is a little bit longer.</p>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#modalinfo{{ $wd->id }}">
-                                    info
-                                </button>
-                               
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
-    @foreach ( $buku as $info )
-    <!-- Modal -->
-    <div class="modal fade" id="modalinfo{{ $info->id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title fs-5" id="exampleModalToggleLabel">modal {{ $info->id }}</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row g-0 gap-2">
-                    <div class="col-md-5">
-                        <img src="{{ asset('uploads/' . $info->foto) }}" class="img-fluid rounded-start"
-                            alt="..." style="width:11rem; height:11rem; object-fit:cover;">
-                    </div>
-                    <div class="col-md-5">
-                        <div class="card-body">
-                            <h3 class="card-title">{{ $info->judul }}</h3>
-                            <br>
-                            <br>
-                            <p>penerbit : {{ $info->penerbit }}</p>
-                            <p>kategori : {{ $info->kategori->nama }}</p>
-                            <p>bahasa   : {{ $info->bahasa  }}</p>
-                            <p>harga    : Rp. {{ $info->harga  }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <p>stock saat ini: {{ $info->stok }}</p>
-              <button class="btn btn-success text-light" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"><i class="bi bi-cart-plus"></i>  keranjang</button>
-              <button class="btn border border-success" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"><i class="bi bi-bag-check"></i>  beli</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      @endforeach
-    <p>p</p>
+    
 @endsection
+{{--  <button class="btn btn-success text-light" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"><i class="bi bi-cart-plus"></i>  keranjang</button> --}}

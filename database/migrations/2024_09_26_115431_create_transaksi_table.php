@@ -15,11 +15,11 @@ class CreateTransaksiTable extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
             $table->date('tgl');
-            $table->bigInteger('subtotal');
-            $table->bigInteger('uangmasuk');
-            $table->bigInteger('kembalian');
-            
+            $table->integer('uangmasuk');
+            $table->integer('kembalian');
+            $table->integer('total');
             $table->timestamps();
         });
     }

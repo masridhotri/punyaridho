@@ -11,10 +11,7 @@ class JurnalModel extends Model
     protected $table = 'jurnal';
     protected $fillable = [
         'id_jurnal',
-        'judul',
-        'penulis',
-        'penerbit',
-        'tahun',
+        'judul',        
         'akreditasi',
         'kategori_id',
         'file'
@@ -22,6 +19,9 @@ class JurnalModel extends Model
     public function kategori()
     {
         return $this->belongsTo(KategoriModel::class, 'kategori_id');
+    }
+    public function pinjaman() {
+        return $this->hasMany(PinjamModel::class);
     }
 
 }

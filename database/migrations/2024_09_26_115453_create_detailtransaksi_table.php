@@ -17,10 +17,10 @@ class CreateDetailtransaksiTable extends Migration
             $table->id();
             $table->foreignId('transaksi_id')->constrained('transaksi');
             $table->foreignId('buku_id')->constrained('buku');
-            $table->integer('qty');
-            $table->foreignId('user_id')->constrained('users');
+            $table->decimal('total');
+            $table->decimal('qty');
             $table->timestamps();
-        });
+        }); 
     }
 
     /**

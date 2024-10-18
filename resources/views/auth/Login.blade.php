@@ -1,87 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Skydash Admin</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="{{asset('tamplate/dist/assets/vendors/feather/feather.css')}}">
-    <link rel="stylesheet" href="{{asset('tamplate/dist/assets/vendors/ti-icons/css/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('tamplate/dist/assets/vendors/css/vendor.bundle.base.css')}}">
-    <link rel="stylesheet" href="{{asset('tamplate/dist/assets/vendors/font-awesome/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('tamplate/dist/assets/vendors/mdi/css/materialdesignicons.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('tamplate/dist/assets/vendors/feather/feather.css') }}">
+    <link rel="stylesheet" href="{{ asset('tamplate/dist/assets/vendors/ti-icons/css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('tamplate/dist/assets/vendors/css/vendor.bundle.base.css') }}">
+    <link rel="stylesheet" href="{{ asset('tamplate/dist/assets/vendors/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('tamplate/dist/assets/vendors/mdi/css/materialdesignicons.min.css') }}">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="{{asset('tamplate/dist/assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('tamplate/dist/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <!-- endinject -->
-    <link rel="shortcut icon" href="{{asset('tamplate/dist/assets/images/favicon.png')}}"/>
-  </head>
-  <body>
+    <link rel="shortcut icon" href="{{ asset('tamplate/dist/assets/images/favicon.png') }}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
     <div class="container-scroller">
-      <div class="container-fluid page-body-wrapper full-page-wrapper">
-        <div class="content-wrapper d-flex align-items-center auth px-0">
-          <div class="row w-100 mx-0">
-            <div class="col-lg-4 mx-auto">
-              <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-                <div class="brand-logo">
-                  <img src="../../assets/images/logo.svg" alt="logo">
-                </div>
-                <h4>Hello! let's get started</h4>
-                <h6 class="font-weight-light">Regist your account</h6>
-                <form class="pt-3" action="{{ route('login-proses') }}" method="POST" >
-                    @csrf
-                  <div class="form-group">
-                    <input type="email" name="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email">
-                    @error('email')
-                        <small>{{ $message }}</small>
-                    @enderror
-                  </div>
-                  <div class="form-group">
-                    <input type="password" name="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
-                    @error('password')
-                        <small>{{ $message }}</small>
-                    @enderror 
-                  </div>
-                  <div class="mt-3 d-grid gap-2">
-                    <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Sign In</button                  </div>
-                  <div class="my-2 d-flex justify-content-between align-items-center">
-                    <div class="form-check">
-                      <label class="form-check-label text-muted">
-                        <input type="checkbox" class="form-check-input"> Keep me signed in </label>
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper d-flex align-items-center auth px-0">
+                <div class="row w-100 mx-0">
+                    <div class="col-lg-4 mx-auto">
+                        <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                            <div class="brand-logo">
+                                <img src="{{ asset('logo/logo.jpeg') }}" alt="logo" id="logo">
+                            </div>
+                            <h4>Hello! let's get started</h4>
+                            <h6 class="font-weight-light">Regist your account</h6>
+                            <form class="pt-3" action="{{ route('login-proses') }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control form-control-lg"
+                                        id="exampleInputEmail1" placeholder="Email">
+                                    @error('email')
+                                        <small>{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" class="form-control form-control-lg"
+                                        id="exampleInputPassword1" placeholder="Password">
+                                    @error('password')
+                                        <small>{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="mt-3 d-grid gap-2">
+                                    <button type="submit"
+                                        class="btn btn-block btn-dark btn-lg font-weight-medium auth-form-btn">Sign
+                                        In</button>
+                                    <div class="my-2 d-flex justify-content-between align-items-center">
+                                        <div class="form-check">
+                                            <label class="form-check-label text-muted">
+                                                <input type="checkbox" class="form-check-input"> Keep me signed in
+                                            </label>
+                                        </div>
+                                        <a href="#" class="auth-link text-black">Forgot password?</a>
+                                    </div>
+                                    <div class="mb-2 d-grid gap-2">
+                                        <button type="button" class="btn btn-block btn-facebook auth-form-btn">
+                                            <i class="ti-facebook me-2"></i>Connect using facebook </button>
+                                    </div>
+                                    <div class="text-center mt-4 font-weight-light"> Don't have an account?
+                                        {{-- <a href="{{ route('register') }}" class="text-primary">Create</a> --}}
+                                    </div>
+                            </form>
+                        </div>
                     </div>
-                    <a href="#" class="auth-link text-black">Forgot password?</a>
-                  </div>
-                  <div class="mb-2 d-grid gap-2">
-                    <button type="button" class="btn btn-block btn-facebook auth-form-btn">
-                      <i class="ti-facebook me-2"></i>Connect using facebook </button>
-                  </div>
-                  <div class="text-center mt-4 font-weight-light"> Don't have an account? 
-                    {{-- <a href="{{ route('register') }}" class="text-primary">Create</a> --}}
-                  </div>
-                </form>
-              </div>
+                </div>
             </div>
-          </div>
+            <!-- content-wrapper ends -->
         </div>
-        <!-- content-wrapper ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
+        <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="{{asset('tamplate/src/assets/vendors/js/vendor.bundle.base.js')}}"></script>
+    <script src="{{ asset('tamplate/src/assets/vendors/js/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="{{asset('tamplate/src/assets/js/off-canvas.js')}}"></script>
-    <script src="{{asset('tamplate/src/assets/js/template.js')}}"></script>
-    <script src="{{asset('tamplate/src/assets/js/settings.js')}}"></script>
-    <script src="{{asset('tamplate/src/assets/js/todolist.js')}}"></script>
+    <script src="{{ asset('tamplate/src/assets/js/off-canvas.js') }}"></script>
+    <script src="{{ asset('tamplate/src/assets/js/template.js') }}"></script>
+    <script src="{{ asset('tamplate/src/assets/js/settings.js') }}"></script>
+    <script src="{{ asset('tamplate/src/assets/js/todolist.js') }}"></script>
     <!-- endinject -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @if ($message = Session::get('error'))
@@ -89,5 +99,6 @@
             Swal.fire('{{ $message }}');
         </script>
     @endif
-  </body>
+</body>
+
 </html>

@@ -1,3 +1,4 @@
+
 <nav class="navbar col-lg-13 col-13 p-0 fixed-top d-flex flex-row" style="width: 100%">
     {{-- <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
         <a class="navbar-brand brand-logo me-5" href="index.html"><img
@@ -30,7 +31,7 @@
                     <span class="count"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-                    aria-labelledby="notificationDropdown">
+                z     aria-labelledby="notificationDropdown">
                     <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
                     <a class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
@@ -67,13 +68,15 @@
                     </a>
                 </div>
             </li>
+            <li>
+                <button type="button" class="btn" data-bs-target="#modalkeranjang" data-bs-toggle="modal"> <i class="bi bi-cart4 fs-3"></i> </button>
+            </li>
             <li class="nav-item nav-profile dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
                     <img src="{{ asset('tamplate/dist/assets/images/faces/face28.jpg') }}" alt="profile" />
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item">
-                        <i class="ti-settings text-primary"></i> Settings </a>
+                    <button type="button" class="btn dropdown-items" data-bs-toggle="button"> <i class="ti-settings text-primary"></i>settings</button>
                     <a href="{{ route('logout') }}" class="dropdown-item">
                         <i class="ti-power-off text-primary"></i> Logout </a>
                 </div>
@@ -90,3 +93,20 @@
         </button>
     </div>
 </nav>
+
+<script>
+    $(document).ready(function(){
+        $('#loadModal').click(function(){
+            // Request modal content via AJAX
+            $.get('/get-modal-content', function(data){
+                // Insert the returned modal HTML into the placeholder
+                $('#modalPlaceholder').html(data);
+                // Show the modal
+                $('#myModal').modal('show');
+            });
+        });
+    });
+    </script>
+
+{{-- <i class="bi bi-cart4"></i> --}}
+

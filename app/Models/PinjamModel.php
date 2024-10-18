@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class PinjamModel extends Model
 {
     use HasFactory;
+    protected $table = 'peminjaman';
+    protected $fillable = [
+        'jurnal_id',
+        'tgl_pinjam',
+        'tgl_kembali',
+        'quantity'
+        
+    ];
+    public function jurnal() {
+        return $this->belongsTo(JurnalModel::class);
+    }
 }

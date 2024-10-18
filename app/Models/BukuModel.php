@@ -11,7 +11,6 @@ class BukuModel extends Model
     protected $table = 'buku';
 
     protected $fillable = [
-        'id_buku',
         'judul',
         'penulis',
         'penerbit',
@@ -27,8 +26,7 @@ class BukuModel extends Model
         {
             return $this->belongsTo(KategoriModel::class, 'kategori_id');
         }
-        public  function detailtransaksi()
-        {
-            return $this->hasMany(DetailTransaksiModel::class, 'no_transaksi');
+        public function detail(){
+            return $this->belongto(DetailtransaksiModel::class, 'detail_id');
         }
 }

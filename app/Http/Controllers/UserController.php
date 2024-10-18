@@ -7,9 +7,13 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    function dashboard() {
-        return view('dashboard');
+    public function user(){
+        return view('user');
     }
+   public function index(){ 
+    $User = User::get();
+    return view('dashboard',compact('User'));
+}
 
     function create() {
         return view('user.create');
@@ -22,11 +26,19 @@ class UserController extends Controller
             'password' => 'required',
             'role' => 'required',
         ]);
+        $filepath = public_path('profile');
         $User = New User();
         $User->name = $request->name;
         $User->email = $request->email;
         $User->password = bcrypt($request->password);
         $User->role = $request->role;
+        if ($request->hasfile('iamge')) {
+            $file = $request->file('image');
+            $file_name = time(). $file->getClientOriginalName();
+
+            $file->move(public_path('image'), $file_name);
+            $User->foto = $file_name;
+        }
         $User->save();
         return redirect()->route('admin.dashboard');
     }
@@ -45,7 +57,7 @@ class UserController extends Controller
             'password' => 'nullable',
             'role' => 'required',
 
-        ]);
+        ]); 
         $User->name = $request->name;
         $User->email = $request->email;
 

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+    
 class CreateBukuTable extends Migration
 {
     /**
@@ -21,8 +21,8 @@ class CreateBukuTable extends Migration
             $table->integer('tahun');
             $table->foreignId('kategori_id')->constrained('kategori');
             $table->string('bahasa');
-            $table->bigInteger('harga');
-            $table->string('file_path');
+            $table->decimal('harga',10,2);
+            $table->string('foto');
             $table->integer('stok');
             $table->timestamps();
         });

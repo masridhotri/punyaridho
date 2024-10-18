@@ -16,11 +16,8 @@ class CreateDetailpeminjamanTable extends Migration
         Schema::create('detailpeminjaman', function (Blueprint $table) {
             $table->id();
             $table->foreignid('peminjaman_id')->constrained('peminjaman');
-            $table->foreignid('user_id')->constrained('users');
             $table->foreignid('jurnal_id')->constrained('jurnal');
-            $table->foreignId('kategori_id')->constrained('kategori');
-            $table->integer('qty');
-            $table->enum('status', ['dipinjam', 'dikembalikan']);
+            $table->date('tgl');
             $table->timestamps();
         });
     }

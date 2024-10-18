@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\BukuExport;
 use Illuminate\Http\Request;
 use App\Models\BukuModel;
 use iluminate\validation\Rule;
 use App\Models\KategoriModel;
 use illuminate\strorage\Exception;
+use Maatwebsite\Excel\Facades\Excel;
 use illuminate\Support\file;
 
 class BukuController extends Controller
@@ -21,6 +23,14 @@ class BukuController extends Controller
         $buku = BukuModel::get();
        
         return view('buku.list',compact('buku','kategori'));
+    }
+    public function hilirisasi()
+    {
+        $kategori = KategoriModel::all();
+        
+        $buku = BukuModel::get();
+       
+        return view('buku.bukuadd',compact('buku','kategori'));
     }
 
     function store(Request $request){
@@ -91,4 +101,8 @@ class BukuController extends Controller
     $buku->delete();
     return redirect()->route('admin.buku');
     }
+    public function export()
+	{
+		return Excel::download(new BukuExport, 'buku.xlsx');
+	}
 }

@@ -5,7 +5,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Skydash Admin</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+    <title>perpustakaanhybrid</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('tamplate/dist/assets/vendors/feather/feather.css') }}">
     <link rel="stylesheet" href="{{ asset('tamplate/dist/assets/vendors/ti-icons/css/themify-icons.css') }}">
@@ -774,6 +776,7 @@
             responsive: true
         });
     </script>
+  
     <!-- <script src="assets/js/Chart.roundedBarCharts.js"></script> -->
     <!-- End custom js for this page-->
 </body>
