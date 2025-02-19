@@ -1,0 +1,3 @@
+   $todo = dayli::wheredate('tgl_rencana',[carbon::today()])->orderBy('prioritas','desc')->get();
+        $dolist = dayli::whereBetween('tgl_rencana', [Carbon::now(), Carbon::now()->endOfMonth()  ])->get();      
+          return view('welcome', compact('todo','dolist'));
